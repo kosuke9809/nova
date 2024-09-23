@@ -2,7 +2,7 @@ package repository
 
 import "nova/domain/model"
 
-type TabRepository interface {
+type ITabRepository interface {
 	Save(tab *model.Tab) error
 	Update(tab *model.Tab) error
 	Delete(id int) error

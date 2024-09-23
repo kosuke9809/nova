@@ -5,6 +5,25 @@ type Editor struct {
 	Windows     []*Window
 	Tabs        []*Tab
 	CurrentMode Mode
+	Settings    EditorSettings
+}
+
+type EditorSettings struct {
+	TabSize            int
+	InsertSpacesForTab bool
+	LineNumbers        bool
+	SyntaxHighlighting bool
+	Theme              string
+}
+
+func DefaultEditorSettings() EditorSettings {
+	return EditorSettings{
+		TabSize:            4,
+		InsertSpacesForTab: true,
+		LineNumbers:        true,
+		SyntaxHighlighting: true,
+		Theme:              "default",
+	}
 }
 
 type Mode int
@@ -19,5 +38,6 @@ func NewEditor() *Editor {
 		Windows:     make([]*Window, 0),
 		Tabs:        make([]*Tab, 0),
 		CurrentMode: NormalMode,
+		Settings:    DefaultEditorSettings(),
 	}
 }

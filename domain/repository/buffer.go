@@ -2,7 +2,7 @@ package repository
 
 import "nova/domain/model"
 
-type BufferRepository interface {
+type IBufferRepository interface {
 	Save(buffer *model.Buffer) error
 	Update(buffer *model.Buffer) error
 	Delete(id int) error
