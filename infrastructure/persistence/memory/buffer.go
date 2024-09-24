@@ -32,8 +32,8 @@ func (br *bufferRepository) FindByID(id int) (*model.Buffer, error) {
 }
 
 func (br *bufferRepository) Save(buffer *model.Buffer) error {
-	br.mu.RLock()
-	defer br.mu.RUnlock()
+	br.mu.Lock()
+	defer br.mu.Unlock()
 
 	if buffer.ID == 0 {
 		buffer.ID = br.nextID

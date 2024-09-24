@@ -32,8 +32,8 @@ func (wr *windowRepository) FindByID(id int) (*model.Window, error) {
 }
 
 func (wr *windowRepository) Save(window *model.Window) error {
-	wr.mu.RLock()
-	defer wr.mu.RUnlock()
+	wr.mu.Lock()
+	defer wr.mu.Unlock()
 
 	if window.ID == 0 {
 		window.ID = wr.nextID
